@@ -13,7 +13,11 @@
         <li><strong>MS</strong> - Meal Services</li>
     </ul>
 
-    <button onclick="sortByMH('MH')" id="MHbtn">MH</button>
+    <button onclick="sort('')" id="Allbtn">See All</button>
+    <button onclick="sort('MH')" id="MHbtn">MH</button>
+    <button onclick="sort('FB')" id="FBbtn">FB</button>
+    <button onclick="sort('HS')" id="HSbtn">HS</button>
+    <button onclick="sort('MS')" id="MSbtn">MS</button>
 
     <table id="myTab">
         <tbody>
@@ -554,7 +558,7 @@
     </style>
 
     <script>
-        function sortByMH(inp) {
+        function sort(inp) {
           // Declare variables
           var input, table, tr, td, i, txtValue;
           input = inp;
