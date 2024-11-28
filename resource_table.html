@@ -557,12 +557,12 @@
         function sortByMH() {
           // Declare variables
           var input, table, tr, td, i, txtValue;
-          input = document.getElementById("MH");
+          input = "MH";//document.getElementById("MH");
           table = document.getElementById("myTab");
           tr = table.getElementsByTagName("tr");
         
           // Loop through all table rows, and hide those who don't match the button type
-          for (i = 1; i < tr.length; i++) {
+          for (i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[0];
             if (td) {
               txtValue = td.textContent || td.innerText;
