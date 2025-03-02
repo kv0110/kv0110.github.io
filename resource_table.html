@@ -3,7 +3,12 @@
 </head>
 
 <body>
-    <h1>Resource Table</h1>
+    <div class="topnav">
+        <a class="active" href="file:///Users/kavyamridulavenkatesan/Github/passproj/kv0110.github.io/resource_table.html#">Home</a>
+        <a href="file:///Users/kavyamridulavenkatesan/Github/passproj/kv0110.github.io/map.html#" id="mapLink">Map</a>
+    </div>
+
+    <h1>ReHDI: Resource Hub for Displaced Individuals</h1>
 
     <h2>Resource Types</h2>
     <ul>
@@ -13,14 +18,45 @@
         <li><strong>MS</strong> - Meal Services</li>
     </ul>
 
-    <button onclick="sort('')" id="Allbtn">See All</button>
-    <button onclick="sort('MH')" id="MHbtn">MH</button>
-    <button onclick="sort('FB')" id="FBbtn">FB</button>
-    <button onclick="sort('HS')" id="HSbtn">HS</button>
-    <button onclick="sort('MS')" id="MSbtn">MS</button>
+    <h3>Click "See All" to reset selection</h3>
+
+    <h4 id="selectionDisplay">Use buttons and dropdowns to search</h4>
+
+    <button onclick="onIn('', 0); changeHeader('see all');" id="Allbtn">See All</button>
+    <button onclick="onIn('MH', 0); changeHeader('MH');" id="MHbtn">MH</button>
+    <button onclick="onIn('FB', 0); changeHeader('FB');" id="FBbtn">FB</button>
+    <button onclick="onIn('HS', 0); changeHeader('HS');" id="HSbtn">HS</button>
+    <button onclick="onIn('MS', 0); changeHeader('MS');" id="MSbtn">MS</button>
+
+    <div id="d1" class="dropdown">
+        <button class="dropbtn">[-]</button>
+        <div id="myDropdown" class="dropdown-content">
+          <button onclick="onIn('in person', 2); changeHeader('in person');" class="dropbtn">in person</button>
+          <button onclick="onIn('online', 2); changeHeader('online');" class="dropbtn">online</button>
+          <button onclick="onIn('', 2); changeHeader('both');" class="dropbtn">both</button>
+        </div>
+    </div>
+
+    <div id="d2" class="dropdown">
+        <button class="dropbtn">[-]</button>
+        <div id="myDropdown" class="dropdown-content">
+          <button onclick="onIn('none', 5); changeHeader('none');" class="dropbtn">none</button>
+          <button onclick="onIn('other', 5); changeHeader('other');" class="dropbtn">other</button>
+          <button onclick="onIn('', 5); changeHeader('all');" class="dropbtn">all</button>
+        </div>
+    </div>
 
     <table id="myTab">
         <tbody>
+            <colgroup> 
+                <col style="width: 10%;">
+                <col style="width: 10%;">
+                <col style="width: 10%;">
+                <col style="width: 25%;">
+                <col style="width: 15%;">
+                <col style="width: 15%;">
+                <col style="width: 15%;">
+            </colgroup>
             <tr>
                 <th>category</th>
                 <th>website</th>
@@ -42,7 +78,7 @@
                 </td>
                 <td>typically during daytime hours on weekdays</td>
                 <td>
-                    None; services are directly targeted at homeless individuals.
+                    None : services are directly targeted at homeless individuals.
                 </td>
                 <td>
                     locations vary based on the schedule of the mobile clinic in
@@ -61,13 +97,13 @@
                 </td>
                 <td>always</td>
                 <td>
-                    none for accessing resources, targeted at healthcare providers
+                    None for accessing resources, targeted at healthcare providers
                 </td>
                 <td>N/A</td>
             </tr>
             <tr>
                 <td>MH</td>
-                <td><a href="https://www.samhsa.gov/">samhsa</a></td>
+                <td><a href="https://www.samhsa.gov/communities/homelessness-programs-resources">samhsa</a></td>
                 <td>online & in person</td>
                 <td>
                     SAMHSA offers programs and resources to support mental health
@@ -77,7 +113,7 @@
                 </td>
                 <td>online: always, in person: varies based on location</td>
                 <td>
-                    Varies by program; some services may require referral or
+                    Other : Varies by program; some services may require referral or
                     appointment
                 </td>
                 <td>samhsa treatment locator</td>
@@ -94,28 +130,10 @@
                 </td>
                 <td>typically during evenings and weekends</td>
                 <td>
-                    None; open to all, with some groups specifically targeting those
+                    None : open to all, with some groups specifically targeting those
                     experiencing homelessness or severe mental illness
                 </td>
                 <td>nami affiliate locator</td>
-            </tr>
-            <tr>
-                <td>MH</td>
-                <td><a href="https://www.smchealth.org/behavioral-health">san mateo bhrs</a></td>
-                <td>online & in person</td>
-                <td>
-                    Offers comprehensive mental health services including emergency
-                    psychiatric care, ongoing therapy, and case management. They
-                    provide specialized programs for homeless individuals, such as
-                    crisis intervention services, mental health assessments, and
-                    connections to supportive housing.
-                </td>
-                <td>varies, some are always open</td>
-                <td>
-                    Services are available to residents of San Mateo County. Proof
-                    of residency or homelessness may be required.
-                </td>
-                <td>225 37th Avenue, San Mateo, CA 94403</td>
             </tr>
             <tr>
                 <td>FB</td>
@@ -130,7 +148,7 @@
             </tr>
             <tr>
                 <td>FB</td>
-                <td><a href="https://www.glide.org/">glide memorial church</a></td>
+                <td><a href="https://www.glide.org/programs/daily-free-meals/">glide memorial church</a></td>
                 <td>in person</td>
                 <td>
                     Offers three free meals a day to homeless and low-income
@@ -154,7 +172,7 @@
                 <td>
                     Varies by location; typically weekdays during business hours.
                 </td>
-                <td>registration might be needed at some sites</td>
+                <td>Other : registration might be needed at some sites</td>
                 <td>
                     Multiple locations across San Mateo County, main warehouse is at
                     1051 Bing Street, San Carlos, CA 94070
@@ -162,7 +180,7 @@
             </tr>
             <tr>
                 <td>FB</td>
-                <td><a href="https://www.samaritanhousesanmateo.org/">samaritan house</a></td>
+                <td><a href="https://samaritanhousesanmateo.org/service/food-services/">samaritan house</a></td>
                 <td>in person</td>
                 <td>
                     Offers free hot meals to low-income and homeless individuals,
@@ -190,16 +208,7 @@
             </tr>
             <tr>
                 <td>FB</td>
-                <td><a href="https://www.cityteam.org/san-jose">cityteam san jose</a></td>
-                <td>in person</td>
-                <td>Provides free hot meals to homeless individuals in San Jose</td>
-                <td>Dinner served daily at 5:30 PM</td>
-                <td>none</td>
-                <td>1174 Old Bayshore Highway, San Jose, CA 95112</td>
-            </tr>
-            <tr>
-                <td>FB</td>
-                <td><a href="https://paloaltofoodcloset.org/">palo alto food closet</a></td>
+                <td><a href="https://www.southpaloaltofoodcloset.com/">palo alto food closet</a></td>
                 <td>in person</td>
                 <td>Provides groceries and prepared meals to homeless and low-income individuals.</td>
                 <td>Monday - Friday, 10:00 AM - 2:00 PM</td>
@@ -208,7 +217,7 @@
             </tr>
             <tr>
                 <td>FB</td>
-                <td>Breakfast: 6:30 AM - 8:00 AM, Lunch: 12:00 PM - 1:00 PM, Dinner: 5:30 PM - 6:30 PM</td>
+                <td><a href="https://svdp-sf.org/what-we-do/msc-shelter/">msc shelter</a></td>
                 <td>in person</td>
                 <td>Provides meals to homeless individuals, along with shelter and other supportive services. The dining room serves three meals daily.</td>
                 <td>Breakfast: 6:30 AM - 7:30 AM, Lunch: 11:30 AM - 1:00 PM, Dinner: 4:30 PM - 6:00 PM</td>
@@ -217,16 +226,7 @@
             </tr>
             <tr>
                 <td>FB</td>
-                <td><a href="https://www.svdp-sf.org/">maple street shelter</a></td>
-                <td>in person</td>
-                <td>Offers free meals along with shelter services. Breakfast, lunch, and dinner are provided to residents and walk-in guests.</td>
-                <td>Breakfast: 6:30 AM - 8:00 AM, Lunch: 12:00 PM - 1:00 PM, Dinner: 5:30 PM - 6:30 PM</td>
-                <td>none for meals, but prerequisites may apply for shelter services</td>
-                <td>1580A Maple Street, Redwood City, CA 94063</td>
-            </tr>
-            <tr>
-                <td>FB</td>
-                <td><a href="https://www.shf.org/">sacred heart</a></td>
+                <td><a href="https://www.sacredheartcs.org/programs-food-clothing">sacred heart</a></td>
                 <td>in person</td>
                 <td>Provides groceries and meals to low-income and homeless individuals. Sacred Heart also offers clothing, housing assistance, and other vital services.</td>
                 <td>Monday: 9:00 AM - 11:30 AM, Tuesday: 10:30 AM - 12:30 PM, Wednesday & Thursday: 1:00 PM - 3:00 PM, Friday: 9:00 AM - 11:30 AM</td>
@@ -243,21 +243,12 @@
                 <td>311 Willow Street, San Jose, CA 95110</td>
             </tr>
             <tr>
-                <td>FB</td>
-                <td><a href="https://www.eastoakland.org/">east oakland community project</a></td>
-                <td>in person</td>
-                <td>Provides shelter and meals to homeless individuals. Offers breakfast, lunch, and dinner as part of its comprehensive services.</td>
-                <td>Breakfast: 7:00 AM - 8:00 AM, Lunch: 12:00 PM - 1:00 PM, Dinner: 5:00 PM - 6:00 PM</td>
-                <td>none for meals, but prerequisites may apply for shelter services</td>
-                <td>7515 International Blvd, Oakland, CA 94621</td>
-            </tr>
-            <tr>
                 <td>MH</td>
                 <td><a href="https://www.crisistextline.org/">crisis text line</a></td>
                 <td>online</td>
                 <td>Provides free, 24/7 crisis support through text messaging. Individuals experiencing mental health crises can text for immediate help.</td>
                 <td>24/7</td>
-                <td>must have access to a phone to text</td>
+                <td>Other : must have access to a phone to text</td>
                 <td>N/A</td>
             </tr>
             <tr>
@@ -271,11 +262,11 @@
             </tr>
             <tr>
                 <td>HS</td>
-                <td><a href="https://www.ecs-sf.org/">ecs</a></td>
+                <td><a href="https://www.ecs-sf.org/">episcopal community services</a></td>
                 <td>in person</td>
                 <td>Provides emergency shelter, transitional housing, and mental health support services.</td>
                 <td>Shelters: Open 24/7 for residents. Day Services: Monday to Friday, 9:00 AM – 5:00 PM.</td>
-                <td>Screening process for shelters and housing programs.</td>
+                <td>Other : Screening process for shelters and housing programs.</td>
                 <td>165 8th St, San Francisco, CA 94103</td>
             </tr>
             <tr>
@@ -284,7 +275,7 @@
                 <td>in person</td>
                 <td>Provides emergency shelter and supportive services for families with children.</td>
                 <td>Shelter: Open 24/7 for residents. Services: Monday to Friday, 9:00 AM – 5:00 PM for appointments and intakes.</td>
-                <td>Must be a family with children; intake required.</td>
+                <td>Other : Must be a family with children; intake required.</td>
                 <td>325 Villa Terrace, San Mateo, CA 94401</td>
             </tr>
             <tr>
@@ -293,7 +284,7 @@
                 <td>in person</td>
                 <td>Provides emergency shelter, medical services, and transitional housing.</td>
                 <td>Shelter: Open 24/7 for residents. Drop-In Center: Monday to Friday, 9:00 AM – 5:00 PM.</td>
-                <td>Intake required for shelter.</td>
+                <td>Other : Intake required for shelter.</td>
                 <td>2011 Little Orchard St, San Jose, CA 95125</td>
             </tr>
             <tr>
@@ -302,76 +293,8 @@
                 <td>in person</td>
                 <td>Provides shelter, meals, and supportive services for homeless families in Santa Clara County, including case management, children’s programs, and financial literacy.</td>
                 <td>Shelter: Open 24/7 for residents. Services/Office: Monday to Friday, 9:00 AM – 5:00 PM.</td>
-                <td>Must be a homeless family (at least one child under 18); intake process required to assess eligibility.</td>
+                <td>Other : Must be a homeless family (at least one child under 18); intake process required to assess eligibility.</td>
                 <td>692 North King Road, San Jose</td>
-            </tr>
-            <tr>
-                <td>HS</td>
-                <td><a href="https://www.billwilsoncenter.org/">bill wilson center</a></td>
-                <td>in person</td>
-                <td>Provides housing, counseling, and supportive services for homeless youth, young adults, and families, focusing on crisis support and long-term stability.</td>
-                <td>Shelter Services: Open 24/7 for residents. Drop-in Services/Office: Monday to Friday, 9:00 AM – 5:00 PM.</td>
-                <td>Varies by program; generally serves youth, young adults, and families. Intake required for housing and shelter services.</td>
-                <td>3490 The Alameda, Santa Clara, CA </td>
-            </tr>
-            <tr>
-                <td>HS</td>
-                <td><a href="https://www.heritagehome.org">heritage home</a></td>
-                <td>in person</td>
-                <td>
-                    Provides long-term residential housing, support services, and
-                    counseling for homeless pregnant women, helping them with
-                    prenatal care, parenting skills, and life recovery.
-                </td>
-                <td>
-                    Shelter: Open 24/7 for residents. Office/Services: Monday to
-                    Friday, 9:00 AM – 5:00 PM.
-                </td>
-                <td>
-                    Must be pregnant and experiencing homelessness; intake and
-                    eligibility assessment required.
-                </td>
-                <td>435 N 3rd St, San Jose, CA 95112</td>
-            </tr>
-            <tr>
-                <td>HS</td>
-                <td><a href="https://www.usmission.org">us mission</a></td>
-                <td>in person</td>
-                <td>
-                    Provides emergency shelter, meals, addiction recovery programs,
-                    and long-term residential care for homeless men in San Jose.
-                </td>
-                <td>
-                    Shelter: Open 24/7 for residents. Meals: Dinner served daily
-                    from 5:30 PM – 6:30 PM. Office/Services: Monday to Friday, 9:00
-                    AM – 5:00 PM.
-                </td>
-                <td>
-                    Intake process required for shelter and recovery programs.
-                    Typically serves homeless men and those seeking recovery from
-                    addiction.
-                </td>
-                <td>580 Charles St, San Jose, CA 95112</td>
-            </tr>
-            <tr>
-                <td>HS</td>
-                <td><a href="https://www.salvationarmy.org">salvation army</a></td>
-                <td>in person</td>
-                <td>
-                    Provides emergency shelter, meals, and supportive services for
-                    homeless men in San Jose, with a focus on long-term recovery and
-                    housing assistance.
-                </td>
-                <td>
-                    Shelter: Open 24/7 for residents. Meals: Breakfast and dinner
-                    served daily (exact times may vary). Office/Services: Monday to
-                    Friday, 9:00 AM – 5:00 PM.
-                </td>
-                <td>
-                    Intake required; generally serves homeless men. Eligibility
-                    screening for long-term programs.
-                </td>
-                <td>405 N 4th St, San Jose, CA 95112</td>
             </tr>
             <tr>
                 <td>HS</td>
@@ -389,32 +312,13 @@
                     5:00 PM.
                 </td>
                 <td>
-                    Varies by program; generally requires intake and assessment for
+                    Other : Varies by program; generally requires intake and assessment for
                     eligibility.
                 </td>
                 <td>
                     main office: 4080 North First Street, Suite 100, San Jose, CA
                     95134
                 </td>
-            </tr>
-            <tr>
-                <td>MS</td>
-                <td><a href="https://www.vhhp.org">vhhp</a></td>
-                <td>in person</td>
-                <td>
-                    Provides primary care, reproductive health services (including
-                    birth control, HIV prevention, and STI testing), mental health
-                    counseling, and gender-affirming care for transgender and
-                    non-binary individuals, with free reproductive services through
-                    the Family PACT program.
-                </td>
-                <td>
-                    PRIMARY CARE SERVICES: Tuesdays 9:30 am – 3:30 pm, Wednesdays
-                    12:00 pm (noon) – 4:00 pm; PSYCHIATRY SERVICES: Tuesdays from
-                    12:30 pm – 3:30 pm
-                </td>
-                <td>No prerequisites for general care.</td>
-                <td>693 South 2nd Street San Jose, CA</td>
             </tr>
             <tr>
                 <td>MS</td>
@@ -447,8 +351,7 @@
                 <td>Monday to Friday, 9:00 AM – 5:00 PM.</td>
                 <td>None for basic services.</td>
                 <td>
-                    195 E Virginia St, San Jose, CA 95112 (with multiple clinic
-                    locations)
+                    195 E Virginia St, San Jose, CA 95112
                 </td>
             </tr>
             <tr>
@@ -493,7 +396,7 @@
                     for lunch 12:00 PM—1:00 PM
                 </td>
                 <td>
-                    The services are designed to be low-barrier, but patients may
+                    Other : The services are designed to be low-barrier, but patients may
                     need to enroll depending on the specific service required.
                 </td>
                 <td>
@@ -515,7 +418,7 @@
                     to 5 PM.
                 </td>
                 <td>
-                    Generally none, but clients may need to provide identification
+                    Generally none : but clients may need to provide identification
                     and proof of income for certain programs.
                 </td>
                 <td>Main Campus Address: 777 12th Street, Sacramento, CA 95814</td>
@@ -537,7 +440,7 @@
                     Varies by location; typically Monday to Friday, 8 AM to 5 PM.
                 </td>
                 <td>
-                    Generally none, specific programs may have requirements however.
+                    Generally none : specific programs may have requirements however.
                 </td>
                 <td>
                     Main Clinic Address: 2400 Moorpark Ave, Suite 200, San Jose, CA
@@ -558,25 +461,128 @@
     </style>
 
     <script>
-        function sort(inp) {
-          // Declare variables
-          var input, table, tr, td, i, txtValue;
-          input = inp;
+        window.onload = function() {
+            // Store locations in localStorage when the page reloads
+            const locs = getLocs();
+            localStorage.setItem("locations", JSON.stringify(locs));
+            // You can also log it to the console for debugging
+            console.log("Locations stored in localStorage:", locs);
+        };
+    </script>
+
+    <script>
+        let clickedCategories = [];
+        let onOrIn = '';
+        let hasPre = '';
+
+        function onIn(inp, num) {
+            // Declare variables
+          var input, table, tr, td, i, txtValue, category, catVal, oI, oIText, pre, preText, col;
+          input = inp.toUpperCase();
+          col = num;
+
+          if (col === 0) {
+            addCategory(inp);
+          }
+
+          if (inp === 'other' || inp === 'none') {
+            hasPre = inp.toUpperCase();
+          }
+          else if (inp === 'online' || inp === 'in person') {
+            onOrIn = inp.toUpperCase();
+          }
+          else if (inp === '' && col === 2) {
+            onOrIn = '';
+          }
+          else if (inp === '' && col === 5) {
+            hasPre = '';
+          }
+          else if (inp === '' && col === 0) {
+            onOrIn = hasPre = '';
+          }
+
           table = document.getElementById("myTab");
           tr = table.getElementsByTagName("tr");
         
           // Loop through all table rows, and hide those who don't match the button type
           for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
+            td = tr[i].getElementsByTagName("td")[num];
+            category  = tr[i].getElementsByTagName("td")[0];
+            oI = tr[i].getElementsByTagName("td")[2];
+            pre = tr[i].getElementsByTagName("td")[5];
+
             if (td) {
               txtValue = td.textContent || td.innerText;
-              if (txtValue.toUpperCase().indexOf(input) > -1) {
+              catVal = category.textContent || category.innerText;
+              oIText = oI.textContent || oI.innerText;
+              preText = pre.textContent || pre.innerText;
+
+              if (col === 0 && checkButtons(catVal.toUpperCase()) //replaced first condition: txtValue.toUpperCase().indexOf(input) > -1
+              && (preText.toUpperCase().includes(hasPre) || hasPre === '') 
+              && (oIText.toUpperCase().includes(onOrIn) || onOrIn === '')) {
                 tr[i].style.display = "";
-              } else {
+              } 
+              else if (txtValue.toUpperCase().indexOf(input) > -1 && checkButtons(catVal.toUpperCase())
+              && (preText.toUpperCase().includes(hasPre) || hasPre === '') 
+              && (oIText.toUpperCase().includes(onOrIn) || onOrIn === '')) {
+                tr[i].style.display = "";
+              }
+              else {
                 tr[i].style.display = "none";
               }
             }
           }
+
+          if (inp == ''  && col === 0) {
+            clickedCategories = [];
+          }
+        }
+
+        function addCategory(inp) {
+            if (!clickedCategories.includes(inp)) {
+                clickedCategories.push(inp);
+            }
+        }
+
+        function checkButtons(inp) {
+            if (clickedCategories.some(resource => inp.includes(resource)) || clickedCategories.length === 0) {
+                return true;
+            }
+            return false;
+        }
+
+        let cat = '';
+        let oi = '';
+        let pre = '';
+        function changeHeader(inp) {
+            if (inp === 'see all') {
+                cat = oi = pre = '';
+            } 
+            else if (inp === 'both') {
+                oi = '';
+            }
+            else if (inp === 'all') {
+                pre = '';
+            }
+            else if (inp === 'MH' || inp === 'FB' || inp === 'MS' || inp === 'HS') {
+                if (!cat.includes(inp)) {
+                    cat += (inp + " ");
+                }
+            }
+            else if (inp === 'in person' || inp === 'online') {
+                oi = inp;
+            }
+            else if (inp === 'none' || inp === 'other') {
+                pre = inp;
+            }
+
+            const header = document.getElementById('selectionDisplay');
+            header.innerText = cat + " " + oi + " " + pre;
+            if (header.innerText === '') {
+                header.innerText = 'Use buttons and dropdowns to search';
+            }
         }
     </script>
+
+    <script src="shared.js"></script>
 </body>

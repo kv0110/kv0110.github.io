@@ -2,22 +2,116 @@ body {
   background-color: lightblue;
 }
 
+tbody {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: lightblue; /*#062b63*/
+}
+
+.topnav a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: rgb(234, 233, 233);
+  color: lightblue; /*#062b63*/
+}
+
+.topnav a.active {
+  background-color: white;
+  color: lightblue; /*#062b63*/
+}
+
 h1 {
-    color: white;
-    text-align: center;
-    font-family: "Monaco", Monospace, serif;
-  }
+  color: white;
+  text-align: center;
+  font-family: "Monaco", Monospace, serif;
+}
 
-  h2 {
-    color: white;
-    text-align: left;
-    font-family: "Monaco", Monospace, serif;
-  }
+h2 {
+  color: white;
+  text-align: left;
+  font-family: "Monaco", Monospace, serif;
+}
 
-  ul {
-    color: white;
-    text-align: left;
-    font-family: "Monaco", Monospace, serif;
-  }
+h3 {
+  color: white;
+  text-align: left;
+  font-family: "Monaco", Monospace, serif;
+}
 
+h4 {
+  color: white;
+  text-align: left;
+  font-family: "Monaco", Monospace, serif;
+}
+
+ul {
+  color: white;
+  text-align: left;
+  font-family: "Monaco", Monospace, serif;
+}
+
+.dropbtn {
+  background-color: #ffffff00;
+  color: white;
+  padding: 10px;
+  font-size: 12px;
+  border: none;
+}
+
+.dropdown {
+  position: absolute;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: relative;
+  background-color: #f1f1f1;
+  min-width: 75px;
+  box-shadow: 0px rgba(0,0,0,0.2);
+  z-index: 3;
+}
+
+.dropdown-content button {
+  width: 100%; /*span of button*/
+  padding: 10px 10px;
+  text-align: left; /* Ensures the text is left-aligned */
+  background-color: #f1f1f1;
+  border: none;
+  cursor: pointer;
+  display: block
+}
+
+.dropdown-content button:hover {
+  color: yellow;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #062b63;
+} /* #062b63 this is the dark blue */
+
+#d1 {
+  top: 413px;
+  left: 407px;
+}
+
+#d2 {
+  top: 413px;
+  left: 1128px;
+}
   

@@ -1,0 +1,163 @@
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""
+    />
+
+    <style>
+        body {
+            background-color: lightblue;
+        }
+
+        #map { 
+            height: 93%; 
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: lightblue; /*#062b63*/
+        }
+
+        .topnav a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: rgb(234, 233, 233);
+            color: lightblue; /*#062b63*/
+        }
+
+        .topnav a.active {
+            background-color: white;
+            color: lightblue; /*#062b63*/
+        }
+    </style>
+
+    <script src="resource_table.html"></script>
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="file:///Users/kavyamridulavenkatesan/Github/passproj/kv0110.github.io/resource_table.html#">Home</a>
+        <a class="active" href="file:///Users/kavyamridulavenkatesan/Github/passproj/kv0110.github.io/map.html#">Map</a>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin="">
+    </script>
+
+    <script src="shared.js"></script>
+
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+        var defaultCoors = [37.3387, -121.8853];
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        const customIcon = L.icon({
+            iconUrl: 'map-marker.webp', // Replace with your custom marker image URL
+            iconSize: [50, 49], // Size of the icon
+            iconAnchor: [25, 49], // Anchor point of the icon (base of the pin)
+            popupAnchor: [0, -42], // Where the popup should open relative to the iconAnchor
+            //shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png', // Optional shadow
+            shadowSize: [41, 41]
+        });
+
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(position => {
+                const { latitude, longitude } = position.coords;
+                map.setView([latitude, longitude], 13);
+
+                // Add a marker for the user's location
+                L.marker([latitude, longitude], { icon: customIcon }).addTo(map)
+                    .bindPopup("You are here.")
+                    .openPopup();
+            }, error => {
+                alert("Geolocation failed: " + error.message);
+                setDefaultLoc();
+            });
+        } else {
+            alert("Geolocation is not supported by your browser.");
+            setDefaultLoc();
+        }
+
+        placeLocs();
+
+        /*
+        function placeLocs() {
+            let locs = getLocsFromLocalStorage();
+            console.log("Placing markers for the following locations:", locs);
+            for (var i = 0; i < locs.length; i++) {
+                geocodeAddress(locs[i]);
+                setTimeout(processNextLocation, 1000);
+            }
+        }
+        */
+        //NEW PLACELOCS TO ACCOUNT FOR NOMINATIM'S REQUEST LIMIT
+        function placeLocs() {
+            let locs = getLocsFromLocalStorage();
+            console.log("Placing markers for the following locations:", locs);
+
+            let index = 0;
+
+            function processNextLocation() {
+                if (index < locs.length) {
+                    geocodeAddress(locs[index]); // Process the current location
+                    index++;
+                    setTimeout(processNextLocation, 1000); // Schedule the next location after 1 second
+                }
+            }
+
+            processNextLocation(); // Start processing the first location
+        }
+
+
+        function setDefaultLoc() {
+            map.setView(defaultCoors, 13);
+            L.marker(defaultCoors, { icon: customIcon }).addTo(map)
+                .bindPopup("Default location: San Jose, CA")
+                .openPopup();
+        }
+
+        function geocodeAddress(address) {
+        fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json`)
+            .then(response => response.json())
+            .then(data => {
+            if (data.length > 0) {
+                const { lat, lon } = data[0];
+               // console.log(`Latitude: ${lat}, Longitude: ${lon}`);
+
+                // Add a marker to the map
+                L.marker([lat, lon]).addTo(map)
+                    .bindPopup(`Address: ${address}<br>Coordinates: ${lat}, ${lon}`)
+                    //.openPopup();
+            } else {
+                //alert('Address not found');
+            }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function getLocsFromLocalStorage() {
+            const locs = localStorage.getItem("locations");
+            if (locs) {
+                return JSON.parse(locs);  // Parse and return the stored locations
+            } 
+            else {
+                //console.error("No location data found in localStorage.");
+                return [];
+            }
+        }
+    </script>
+</body>
