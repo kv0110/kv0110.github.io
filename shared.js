@@ -29,3 +29,5 @@ function getLocs() {
     console.log("Placing markers for the following locations:", locs);
     return locs;
 }
+//file:///Users/kavyamridulavenkatesan/Github/passproj/kv0110.github.io/resource_table.html#
+//file:///Users/kavyamridulavenkatesan/Github/passproj/kv0110.github.io/map.html#
