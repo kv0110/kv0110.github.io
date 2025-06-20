@@ -4,8 +4,8 @@
 
 <body>
     <div class="topnav">
-        <a class="active" href="https://kv0110.github.io/resource_table.html">Home</a>
-        <a href="https://kv0110.github.io/map.html" id="mapLink">Map</a>
+        <a class="active" href="file:///Users/kavyamridulavenkatesan/Github/passproj/kv0110.github.io/resource_table.html#">Home</a>
+        <a href="file:///Users/kavyamridulavenkatesan/Github/passproj/kv0110.github.io/map.html#" id="mapLink">Map</a>
         <a href="https://sites.google.com/view/rehdi/home?authuser=0" id="webLink">Website</a>
     </div>
 
@@ -428,7 +428,7 @@
                 <td>MS</td>
                 <td><a href="https://aaci.org/mission/?gad_source=1&amp;gclid=Cj0KCQjwi5q3BhCiARIsAJCfuZkQ108SfvpHnwJRB70s-Qp4yorpZ47ur-PxyYYH_NNCB5Z5jXkfFdoaAuL3EALw_wcB">AACI</a></td>
                 <td>
-                    Primarily in-person services, but some telehealth (online)
+                    Primarily in person services, but some telehealth (online)
                     options may be available.
                 </td>
                 <td>
@@ -448,6 +448,120 @@
                     95128
                 </td>
             </tr>        
+            <tr>
+                <td>FB</td>
+                <td><a href="https://communityconnectionssjc.org/programs/details/stvincentdepaul/">St. Vincent de Paul</a></td>
+                <td>
+                    in person
+                </td>
+                <td>
+                    Provides supplemental groceries for individuals and families. Groceries can be received once every 30 days.
+                </td>
+                <td>
+                    Tuesday, Wednesday, Friday, 2 PM to 3:30 PM.
+                </td>
+                <td>
+                    Other : Must be residents of Manteca, Lathrop or French Camp. Must bring photo ID, proof of address and proof of income for family.
+                </td>
+                <td>
+                    Main Clinic Address: 505 East North Street Manteca, CA 95336 
+                </td>
+            </tr> 
+            <tr>
+                <td>HS</td>
+                <td><a href="https://www.hopefamilyshelters.org/">HOPE Family Shelters</a></td>
+                <td>
+                    in person
+                </td>
+                <td>
+                    A faith-based organization that provides shelter and services to homeless and low-income families for up to 60-90 days.
+                </td>
+                <td>
+                    Monday to Friday, 9 AM to 5 PM.
+                </td>
+                <td>
+                    Other : Serves displaced families with children.
+                </td>
+                <td>
+                    520 Union Road Manteca, CA 95337 
+		        </td>
+            </tr> 
+            <tr>
+                <td>MS</td>
+                <td><a href="">St. Mary's Dining Room</a></td>
+                <td>
+                    in person
+                </td>
+                <td>
+                    Serves breakfast, lunch, and dinner to individuals and families experiencing homelessness and poverty in the community.
+                </td>
+                <td>
+                    Every day, 8:30 AM to 5:30 PM.
+                </td>
+                <td>
+                    None
+                </td>
+                <td>
+                    545 West Sonora Street Stockton, CA 95203 
+		        </td>
+            </tr>
+            <tr>
+                <td>HS</td>
+                <td><a href="https://www.lodihouse.org/?v=84de8e2b14bb">Lodi House</a></td>
+                <td>
+                    in person
+                </td>
+                <td>
+                    Provides support, counseling, and shelter to homeless women and children.
+                </td>
+                <td>
+                    Monday to Friday, 9 AM to 12 PM and 1 PM to 4 PM.
+                </td>
+                <td>
+                    Other : Serves women and children
+                </td>
+                <td>
+                    801 S Washington St, Lodi, CA 95240 
+		        </td>
+            </tr>
+            <tr>
+                <td>HS</td>
+                <td><a href="https://www.mchenryhousetracy.org/">McHenry House</a></td>
+                <td>
+                    in person
+                </td>
+                <td>
+                   Provides temporary housing, counseling and referrals of employment to those in need.
+                </td>
+                <td>
+                    Monday to Friday, 8 AM to 4:30 PM.
+                </td>
+                <td>
+                    None
+                </td>
+                <td>
+                    757 A Street Tracy, CA 95376 
+		        </td>
+            </tr>
+            <tr>
+                <td>MH</td>
+                <td><a href="">Martin Gipson Center</a></td>
+                <td>
+                    in person
+                </td>
+                <td>
+                   A drop-in socialization center for homeless individuals.
+                </td>
+                <td>
+                    Monday to Friday, 9 AM to 5 PM.
+                </td>
+                <td>
+                    Other : Must be an adult and a client of San Joaquin County Behavioral Health Services.
+                </td>
+                <td>
+                    405 E Pine St, Stockton, CA 95204 
+		        </td>
+            </tr>
         </tbody>
     </table>
 
@@ -460,6 +574,27 @@
             padding: 10px 10px;
         }
     </style>
+
+    <script> //THIS IS NOT WORKING RN CAUSE IT RELOADS SO HAVE TO SAVE TO STORAGE
+        const ogTable = document.getElementById("myTab");
+        const rows = ogTable.getElementsByTagName("tr");
+
+        // Create a new table element in memory
+        const copyTable = document.createElement("table");
+
+    function getTab() {
+        for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+
+            // Only clone rows that are currently visible
+            if (row.style.display !== "none") {
+                const rowCopy = row.cloneNode(true); // deep clone
+                copyTable.appendChild(rowCopy);
+            }
+        }
+        return copyTable;
+    }
+    </script>
 
     <script>
         window.onload = function() {
@@ -582,7 +717,33 @@
             if (header.innerText === '') {
                 header.innerText = 'Use buttons and dropdowns to search';
             }
+            getTab(); //initialize the copied table
         }
+    </script>
+
+
+    <button class="open-button" onclick="openForm()">Feedback</button>
+
+    <div class="chat-popup" id="myForm">
+        <form action="send_email.php" method="POST" class="form-container">
+        <h1>Chat</h1>
+
+        <label for="msg"><b>Message</b></label>
+        <textarea placeholder="Type message.." name="msg" required></textarea>
+
+        <button type="submit" class="btn">Send</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+    </div>
+
+    <script>
+    function openForm() {
+    document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+    }
     </script>
 
     <script src="shared.js"></script>
