@@ -107,12 +107,12 @@ ul {
 
 
 #d1 {
-  top: 413px;
+  top: 431px;
   left: 407px;
 }
 
 #d2 {
-  top: 413px;
+  top: 431px;
   left: 1128px;
 }
 
@@ -120,16 +120,17 @@ ul {
 
 /* Button used to open the chat form - fixed at the bottom of the page */
 .open-button {
-  background-color: #555;
+  background-color: #062b63; /*555*/ 
   color: white;
   padding: 16px 20px;
   border: none;
   cursor: pointer;
   opacity: 0.8;
   position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
+  /* bottom: 23px; */
+  top: 15px; /* 23 */
+  right: 15px; /* 28 */
+  width: 200px;
 }
 
 /* The popup chat - hidden by default */
@@ -155,7 +156,7 @@ ul {
   padding: 15px;
   margin: 5px 0 22px 0;
   border: none;
-  background: #f1f1f1;
+  background: #cfcfcf;
   resize: none;
   min-height: 200px;
 }
@@ -186,5 +187,29 @@ ul {
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
+}
+
+/* make the filter buttons pretty */
+
+.filter-button {
+  background-color: rgb(246, 244, 244);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.filter-button:hover {
+  background-color: #dedede;
+  transform: scale(1.05);
+}
+
+.filter-button:active {
+  background-color: #ccc;
+  transform: scale(0.98);
 }
   

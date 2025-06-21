@@ -23,11 +23,11 @@
 
     <h4 id="selectionDisplay">Use buttons and dropdowns to search</h4>
 
-    <button onclick="onIn('', 0); changeHeader('see all');" id="Allbtn">See All</button>
-    <button onclick="onIn('MH', 0); changeHeader('MH');" id="MHbtn">MH</button>
-    <button onclick="onIn('FB', 0); changeHeader('FB');" id="FBbtn">FB</button>
-    <button onclick="onIn('HS', 0); changeHeader('HS');" id="HSbtn">HS</button>
-    <button onclick="onIn('MS', 0); changeHeader('MS');" id="MSbtn">MS</button>
+    <button class="filter-button" onclick="onIn('', 0); changeHeader('see all');" id="Allbtn">See All</button>
+    <button class="filter-button" onclick="onIn('MH', 0); changeHeader('MH');" id="MHbtn">MH</button>
+    <button class="filter-button" onclick="onIn('FB', 0); changeHeader('FB');" id="FBbtn">FB</button>
+    <button class="filter-button" onclick="onIn('HS', 0); changeHeader('HS');" id="HSbtn">HS</button>
+    <button class="filter-button" onclick="onIn('MS', 0); changeHeader('MS');" id="MSbtn">MS</button>
 
     <div id="d1" class="dropdown">
         <button class="dropbtn">[-]</button>
@@ -721,7 +721,7 @@
         }
     </script>
 
-    <button class="open-button" onclick="openForm()">Feedback</button>
+    <button class="open-button" onclick="openForm()">Give Feedback</button>
     <div class="chat-popup" id="myForm">
         <form action="https://formsubmit.co/kavyamridula+rehdi%40gmail.com" method="POST" class="form-container">
         <h1>Chat</h1>
